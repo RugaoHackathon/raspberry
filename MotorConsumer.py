@@ -12,17 +12,20 @@ import json
 from duojidd import duojidd
 def processMessage(msg):
     message = json.loads(msg.decode("utf8"))
-    if message['from'] =='AngleCaculator' and message['type']=='SETANGLE':
+    try:
+        if message['from'] =='AngleCaculator' and message['type']=='SETANGLE':
 
-        degreeInfo = None
-        try:
-            degreeInfo = message['data']
-        except Exception as e:
-            print(e)
-        degreeX = degreeInfo['degreeX']
-        degreeZ = degreeInfo['degreeZ']
-        duojidd(degreeX,degreeZ)
-
+            degreeInfo = None
+            try:
+                degreeInfo = message['data']
+            except Exception as e:
+                print(e)
+            degreeX = degreeInfo['degreeX']
+            degreeZ = degreeInfo['degreeZ']
+            duojidd(degreeX,degreeZ)
+    except Exception, e:
+        print(e)
+        pass
 
 if __name__ == '__main__':
 
