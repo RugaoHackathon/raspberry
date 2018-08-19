@@ -122,7 +122,7 @@ def processMessage(message,client,subscription):
             if isFace(faceInfo):
                 print("......检测到人......")
                 print(count)
-                LastestTimeHasPerson = datetime.datetime.now()
+                
 
                 if BESTGET:
                     return

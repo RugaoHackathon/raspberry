@@ -12,7 +12,7 @@ import json
 from duojidd import duojidd
 def processMessage(msg):
     message = json.loads(msg.decode("utf8"))
-    if message['from'] =='AngleCaculator' and message['type']=='SETANGLE':
+    if message['from'] =='AngleCaculator' and message['type']=='MOTOCTL':
 
         degreeInfo = None
         try:
@@ -22,6 +22,24 @@ def processMessage(msg):
         degreeX = degreeInfo['degreeX']
         degreeZ = degreeInfo['degreeZ']
         duojidd(degreeX,degreeZ)
+
+    try:
+        if message['from'] =='ALICLOUD' and message['type']=='MOTOCTL':
+            degreeInfo = None
+        try:
+            degreeInfo = message['data']
+        except Exception as e:
+            print(e)
+        degreeX = degreeInfo['degreeX']
+        degreeZ = degreeInfo['degreeZ']
+        duojidd(degreeX,degreeZ)
+        
+    except Exception as e:
+        print(e)
+        
+        
+    
+    
 
 
 if __name__ == '__main__':
