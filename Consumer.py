@@ -36,7 +36,7 @@ if __name__ == '__main__':
                 break
             message = item['data']
             try:
-                message = json.loads(message)
+                message = json.loads(message.decode('utf-8'))
             except Exception as e :
                 print(e)
                 continue

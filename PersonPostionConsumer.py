@@ -29,8 +29,8 @@ startDegreeZ = -15
 
 count = 0
 
-IMAGEWIDTH = 1800
-IMAGEHEIGTH = 1600
+IMAGEWIDTH = 640
+IMAGEHEIGTH = 360
 
 CARWIDTH = 180
 
@@ -63,7 +63,7 @@ def getXangle(imageLocation,widthSize,angle):
     y2 = imageLocation[5]
     if score > 0.55:
         xMiddle = (x1+x2)/2
-        if xMiddle>(widthSize/2-50) and xMiddle<(widthSize/2+50):
+        if xMiddle>(widthSize/2-20) and xMiddle<(widthSize/2+20):
             return angle
 
     return None
@@ -77,7 +77,7 @@ def getYangle(imageLocation, heightSize, angle):
     y2 = imageLocation[5]
     if score > 0.55:
         yMiddle = (y1 + y2) / 2
-        if yMiddle > (heightSize / 2 - 20) and yMiddle < (heightSize / 2 + 20):
+        if yMiddle > (heightSize / 2 - 10) and yMiddle < (heightSize / 2 + 10):
             return angle
 
     return None
@@ -94,7 +94,7 @@ def getPosition(xAngle,yAngle,carWidth):
 def getBestAngle(x,y,z):
 
     xAngle = -10
-    yAngle = -5
+    yAngle = -3
     return (xAngle,yAngle)
 
 def processMessage(message,client,subscription):
@@ -106,25 +106,22 @@ def processMessage(message,client,subscription):
     global LastestTimeHasPerson
 
     #步进 度数
-    step = 2
+    step = 5
 
     if message['from'] in ('VIDEO',):
         if message['type'] in ('VIDEOINFO',):
             faceInfoes = message['data']
             imageShape = faceInfoes['imageShape']
-            print(imageShape)
+            
             IMAGEWIDTH = imageShape[1]
             IMAGEHEIGTH = imageShape[0]
             faceInfo = faceInfoes['bbs']
 
-
             #检测到有人
             if isFace(faceInfo):
                 print("......检测到人......")
-                print(count)
                 
-
-                if BESTGET:
+                if BESTGET :
                     return
 
                 if not hasPerson and (count < MAXCOUNT):
@@ -247,7 +244,11 @@ if __name__ == '__main__':
                 break
             message = item['data']
             #print(message)
-            message = json.loads(message)
+            try:
+                message = json.loads(message.decode('utf-8'))
+            except Exception as e:
+                print(e)
+                continue
 
             processMessage(message,client,subscription)
             print(DEGREEX,DEGREEZ)

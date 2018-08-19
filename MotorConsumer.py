@@ -1,9 +1,6 @@
 #coding:utf-8
 
 
-#coding:utf-8
-
-
 from MsgClient import MsClient
 from config import *
 
@@ -54,8 +51,6 @@ if __name__ == '__main__':
             if str(item['data'], 'utf-8') in (END_STRING,):
                 client.pubsub.unsubscribe()
                 break
-            print('item')
-            print(item)
             message = item['data']
             print("message")
             print(message)
