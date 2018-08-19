@@ -23,7 +23,7 @@ def processMessage(msg):
             degreeX = degreeInfo['degreeX']
             degreeZ = degreeInfo['degreeZ']
             duojidd(degreeX,degreeZ)
-    except Exception, e:
+    except Exception as e:
         print(e)
         pass
 
