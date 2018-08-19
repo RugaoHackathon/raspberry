@@ -14,7 +14,7 @@ def buildMsg(imageInfo):
 def buildMotorMsg(motorAngle):
     motorMsg = {}
     motorMsg["from"] = "AngleCaculator"
-    motorMsg["type"] = "SETANGLE"
+    motorMsg["type"] = "MOTOCTL"
     motorMsg["data"] = motorAngle
 
     return json.dumps(motorMsg)
