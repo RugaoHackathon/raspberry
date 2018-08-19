@@ -10,7 +10,8 @@ from config import *
 END_STRING = "finish"
 import json
 from duojidd import duojidd
-def processMessage(message):
+def processMessage(msg):
+    message = json.loads(msg)
     if message['from'] =='AngleCaculator' and message['type']=='SETANGLE':
 
         degreeInfo = None
