@@ -6,7 +6,7 @@ from config import *
 import sys
 sys.path.append("/home/pi/SungemSDK/api/")
 
-from FaceDector import FaceDetector
+from FaceDetector import FaceDetector
 import cv2
 from tools import buildMsg
 import time
