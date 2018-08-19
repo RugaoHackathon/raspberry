@@ -10,7 +10,7 @@ import hsapi as hs
 WEBCAM = False
 class FaceDetector():
     def __init__(self):
-       net = hs.HS('FaceDetector',zoom=True,verbose=2,threshSSD=0.55)
+       self.net = hs.HS('FaceDetector',zoom=True,verbose=2,threshSSD=0.55)
     #net = hs.HS('FaceDetetor',zoom = True,verbose = 2, threshSSD=0.55)
         #pass
 

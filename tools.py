@@ -1,10 +1,12 @@
 
 import json
-def buildMsg(location):
+def buildMsg(imageInfo):
     msgDict = {}
+
+
     msgDict["from"] = "VIDEO"
     msgDict["type"] = "VIDEOINFO"
-    msgDict["data"] = location
+    msgDict["data"] = imageInfo
     return json.dumps(msgDict)
 
 
@@ -12,7 +14,7 @@ def buildMsg(location):
 def buildMotorMsg(motorAngle):
     motorMsg = {}
     motorMsg["from"] = "AngleCaculator"
-    motorMsg["type"] = "ANGLE"
-    motorMsg["data"] = motorMsg
+    motorMsg["type"] = "SETANGLE"
+    motorMsg["data"] = motorAngle
 
     return json.dumps(motorMsg)
