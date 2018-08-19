@@ -44,6 +44,8 @@ BESTGET = False
 
 
 def isFace(faceInfo):
+    if len(faceInfo) ==0:
+        return False
     if len(faceInfo[0]) > 0:
         box = faceInfo[0]
         score = float(box[1])

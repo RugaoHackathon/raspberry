@@ -36,7 +36,7 @@ if __name__ == '__main__':
         imageInfo = {}
         imageInfo['imageShape'] = image.shape
         if len(boundingBoxes)==0:
-            boundingBoxes = [[]]
+            boundingBoxes = []
 
         imageInfo['bbs'] = boundingBoxes
         faceMsg = buildMsg(imageInfo)
