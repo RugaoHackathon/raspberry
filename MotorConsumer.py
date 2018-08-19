@@ -11,7 +11,7 @@ END_STRING = "finish"
 import json
 from duojidd import duojidd
 def processMessage(msg):
-    message = json.loads(msg)
+    message = json.loads(msg.decode("utf8"))
     if message['from'] =='AngleCaculator' and message['type']=='SETANGLE':
 
         degreeInfo = None
