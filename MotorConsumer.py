@@ -36,10 +36,10 @@ if __name__ == '__main__':
             if str(item['data'], 'utf-8') in (END_STRING,):
                 client.pubsub.unsubscribe()
                 break
+            print('item')
+            print(item)
             message = item['data']
-            try:
-                message = json.loads(message)
-            except Exception as e :
-                print(e)
-                continue
+            print("message")
+            print(message)
+     
             processMessage(message)
